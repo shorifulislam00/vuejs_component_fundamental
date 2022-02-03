@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Vue.js Github Profile</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <div id="app" class="ui container">
+            <h1>Github Profiles</h1>
+
+            <div class="ui cards">
+                <github-user v-for="user in users" :username="user"></github-user>
+            </div>
+            
+        </div>
+
+        <script type="text/x-template" id="github-user-template">
+            <div class="ui card">
+                <div class="image">
+                  <img :src="user.avatar_url">
+                </div>
+
+                <div class="content">
+                  <a :href="user.blog" class="header">{{user.name}}</a>
+                  <div class="meta">
+                    <span class="date">Joined in {{user.created_at}}</span>
+                  </div>
+                  <div class="description">
+                    {{user.bio}}
+                  </div>
+                </div>
+
+                <div class="extra content">
+                  <a :href="user.blog + '?tab=followers'">
+                    <i class="user icon"></i>
+                    {{user.followers}} Friends
+                  </a>
+                </div>    
+            </div>
+        </script>
+
+        <script src="vue.js"></script>
+        <script src="app.js"></script>
+    </body>
+</html>
